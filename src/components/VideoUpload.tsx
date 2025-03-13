@@ -75,16 +75,13 @@ const VideoUpload: React.FC = () => {
 
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        () => {
         },
         (error) => {
           toast.error("Failed to upload video to Firebase. Please try again.");
           console.error("Error uploading file to Firebase:", error);
         },
         async () => {
-          // Upload completed successfully, now get the URL
           const firebaseURL = await getDownloadURL(uploadTask.snapshot.ref);
           setFireBaseURL(firebaseURL);
           toast.success("Video uploaded and ready to view!");
