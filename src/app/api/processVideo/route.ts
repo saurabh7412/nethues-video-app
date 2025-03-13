@@ -22,7 +22,9 @@ export async function POST(req: NextRequest) {
                     fileUri: videoUrl
                 }
             },
-            { text: "Describe a short summary of the video provided?" },
+            {
+                text: `Describe a summary of the video provided.\n
+                Important Note - If there is no audio detected in the given video return "No Audio Found" instead of the summary.` },
         ]);
 
         return NextResponse.json({ text: result.response.text() });
