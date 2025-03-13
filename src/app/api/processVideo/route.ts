@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
                     fileUri: videoUrl
                 }
             },
-            { text: "Describe a short summary of the video provided?" },
+            { text: "Describe a summary of the video provided." },
         ]);
 
         return NextResponse.json({ text: result.response.text() });
